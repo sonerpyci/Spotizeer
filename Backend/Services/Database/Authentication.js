@@ -99,6 +99,18 @@ module.exports = {
                 console.log(`ERR -> Service.Authentication.DATABASE_ENGINE.CreateUser() : ${e}`);
                 throw e;
             }
+        },
+        CreateSessionForUser: async (user, entry) => {
+            try {
+                return await user.createSession({
+                    UserId: entry.UserId,
+                    IP: entry.IP,
+                    Browser: entry.Browser,
+                });
+            } catch (e) {
+                console.log(`ERR -> Service.Authentication.DATABASE_ENGINE.CreateSessionForUser() : ${e}`);
+                throw e;
+            }
         }
     }
 

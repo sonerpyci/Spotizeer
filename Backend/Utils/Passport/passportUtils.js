@@ -38,7 +38,8 @@ module.exports = {
                         Username: user.Username,
                         Email: user.Email,
                         Role: user.Role,
-                        Language: user.Language
+                        Language: user.Language,
+                        Session: payload.session,
                     });
                 }
                 return done("Authentication Required", false);

@@ -146,6 +146,9 @@ module.exports = (sequelize, DataTypes) => {
         User.hasOne(models.SpotifyAccount, {
             foreignKey: 'UserId',
         });
+        User.hasMany(models.Log, {
+            foreignKey: 'UserId',
+        });
         User.belongsTo(models.Language, {
             foreignKey: 'LanguageId',
             targetKey: 'Id'

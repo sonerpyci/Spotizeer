@@ -1,32 +1,30 @@
 const CONFIG = require('dotenv').config();
 const express = require('express');
+const morgan = require('morgan')
+const { PassThrough } = require('stream')
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
+const userAgent = require('express-useragent');
 const models = require('./Models');
 const swaggerOpts = require('./Utils/Swagger/swaggerUtils').getOptions(__dirname);
-const authenticator = require('./Middlewares/Authenticator');
+const Authenticator = require('./Middlewares/Authenticator');
+const Interceptor = require('./Middlewares/Interceptor');
 
 const app = express();
 const expressSwagger = require('express-swagger-generator')(app);
 expressSwagger(swaggerOpts);
 
+app.use(morgan('combined'))
+app.use(userAgent.express());
 app.use(bodyParser.json({limit: '50mb', extended: true}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
-app.use(authenticator.initialize())
 
-app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Origin', req.headers.origin);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
-    res.header('Access-Control-Allow-Headers', 'Origin, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, X-Response-Time, X-PINGOTHER, X-CSRF-Token,Authorization');
-    if (req.method === "OPTIONS") {
-        return res.status(200).end();
-    } else {
-        next();
-    }
-});
+
+app.use(Authenticator.initialize())
+app.use(Interceptor.Intercept);
+
 
 app.use(fileUpload({
     useTempFiles : true,
@@ -38,7 +36,7 @@ app.use(fileUpload({
 app.use("/v1/hello", require('./Routes/hello'));
 app.use("/v1/auth", require('./Routes/auth'));
 
-const server =  require('http').Server(app);
+const server =  require('http').createServer(app);
 
 models.sequelize.authenticate()
     .then(() => {
