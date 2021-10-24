@@ -53,6 +53,14 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: 'user',
             field: 'TrackListUrl',
         },
+        AuthToken: {
+            type: DataTypes.STRING,
+            allowNull : false,
+            field: 'AuthToken',
+            validate: {
+                notEmpty : {msg: 'DeezerAccount AuthToken cannot be empty.'}
+            }
+        },
         Status: {
             type: DataTypes.INTEGER,
             field: 'Status',
