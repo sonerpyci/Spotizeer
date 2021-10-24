@@ -1,26 +1,26 @@
 {
-  "name": "diaries-backend",
+  "name": "spotizeer-backend",
   "version": "0.0.1",
-  "description": "A Backend Project to Diaries",
+  "description": "A Backend Project to Spotizeer",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sonerpyci/Diaries"
+    "url": "git+https://github.com/sonerpyci/Spotizeer"
   },
   "keywords": [
     "backend",
     "api",
-    "diaries"
+    "spotizeer"
   ],
   "author": "Soner Paycı, Umay Ece Köprücü",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sonerpyci/Diaries/issues"
+    "url": "https://github.com/sonerpyci/Spotizeer/issues"
   },
-  "homepage": "https://github.com/sonerpyci/Diaries#readme",
+  "homepage": "https://github.com/sonerpyci/Spotizeer#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",

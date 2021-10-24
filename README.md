@@ -1,4 +1,4 @@
-# Diaries Backend 
+# Spotizeer Backend 
 
 ## How To Use?
 

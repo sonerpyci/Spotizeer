@@ -7,7 +7,7 @@ const { Op } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User', {
         Id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT,
             primaryKey: true,
             autoIncrement: true
         },
@@ -139,6 +139,9 @@ module.exports = (sequelize, DataTypes) => {
         User.belongsTo(models.Role, {
             foreignKey: 'RoleId',
             targetKey: 'Id'
+        });
+        User.hasOne(models.DeezerAccount, {
+            foreignKey: 'UserId',
         });
         User.belongsTo(models.Language, {
             foreignKey: 'LanguageId',
