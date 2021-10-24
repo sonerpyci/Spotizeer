@@ -143,6 +143,9 @@ module.exports = (sequelize, DataTypes) => {
         User.hasOne(models.DeezerAccount, {
             foreignKey: 'UserId',
         });
+        User.hasOne(models.SpotifyAccount, {
+            foreignKey: 'UserId',
+        });
         User.belongsTo(models.Language, {
             foreignKey: 'LanguageId',
             targetKey: 'Id'
