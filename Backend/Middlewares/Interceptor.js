@@ -1,4 +1,5 @@
 const {PassThrough} = require("stream");
+const Service = require('../Services/Database/Logger');
 
 module.exports = {
     Intercept : (req, res, next) => {
@@ -30,8 +31,19 @@ module.exports = {
             }
 
             res.on('finish', () => {
-                console.log("req.body", req.body);
-                console.log("res.body", Buffer.concat(chunks).toString());
+                Service.DATABASE_ENGINE.CreateLog({
+                    Route: req.originalUrl,
+                    Method: req.method,
+                    RequestHeaders: JSON.stringify(req.headers),
+                    RequestBody: JSON.stringify(req.body),
+                    ResponseBody: Buffer.concat(chunks).toString(),
+                    ResponseHeaders: JSON.stringify(res.getHeaders()),
+                    ResponseStatus: res.statusCode,
+                    UserId: req.user ? req.user.Id : undefined,
+                    SessionId: req.user ? req.user.Session.Id : undefined,
+                })
+                //console.log("req.body", req.body);
+                //console.log("res.body", Buffer.concat(chunks).toString());
             })
             next();
         }

@@ -58,7 +58,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull : false,
             field: 'AuthToken',
             validate: {
-                notEmpty : {msg: 'DeezerAccount AuthToken cannot be empty.'}
+                notEmpty : {msg: 'SpotifyAccount AuthToken cannot be empty.'}
             }
         },
         Status: {

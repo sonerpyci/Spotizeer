@@ -29,6 +29,16 @@ module.exports = {
                         model: models.Language,
                         as: 'Language',
                         required: true,
+                    },
+                    {
+                        model: models.SpofityAccount,
+                        as: 'SpofityAccount',
+                        required: false,
+                    },
+                    {
+                        model: models.DeezerAccount,
+                        as: 'DeezerAccount',
+                        required: false,
                     }
                 ]
             }).then(user => {
@@ -38,6 +48,8 @@ module.exports = {
                         Username: user.Username,
                         Email: user.Email,
                         Role: user.Role,
+                        SpotifyAccount: user.SpotifyAccount,
+                        DeezerAccount: user.DeezerAccount,
                         Language: user.Language,
                         Session: payload.session,
                     });

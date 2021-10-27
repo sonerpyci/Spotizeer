@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         Route: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull : false,
             field: 'Name',
             validate: {
@@ -17,13 +17,13 @@ module.exports = (sequelize, DataTypes) => {
         Method: {
             type: DataTypes.STRING,
             allowNull : false,
-            field: 'Name',
+            field: 'Method',
             validate: {
                 notEmpty : {msg: 'Log Method cannot be empty.'}
             }
         },
         RequestHeaders: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull : false,
             field: 'RequestHeaders',
             validate: {
@@ -31,12 +31,12 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         RequestBody: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull : true,
             field: 'RequestBody'
         },
         ResponseHeaders: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull : false,
             field: 'ResponseHeaders',
             validate: {
@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         ResponseBody: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull : false,
             field: 'ResponseBody',
             validate: {
