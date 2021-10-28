@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull : true,
             defaultValue: 'user',
-            field: 'TrackListUrl',
+            field: 'Type',
         },
         AuthToken: {
             type: DataTypes.STRING,

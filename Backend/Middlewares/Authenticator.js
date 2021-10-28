@@ -46,7 +46,6 @@ module.exports = {
                     message: lang.info_messages["002"][user.preferredLanguage]
                 });
             }*/
-            console.log("req.user : ", user)
             req.user = user;
             next();
         })(req, res, next);

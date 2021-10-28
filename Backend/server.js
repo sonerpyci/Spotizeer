@@ -33,7 +33,7 @@ app.use(fileUpload({
     createParentPath : true
 }));
 
-app.use("/v1/hello", require('./Routes/hello'));
+app.use("/v1/oauth", require('./Routes/oauth'));
 app.use("/v1/auth", require('./Routes/auth'));
 
 const server =  require('http').createServer(app);

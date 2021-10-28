@@ -6,7 +6,7 @@ let tableName = Controller.getTableName();
 
 /**
  * Signup User Route.
- * @route Post auth/signup
+ * @route Post /auth/signup
  * @group Auth - Signup Endpoint
  * @param {string} FirstName.body.required - user's FirstName.
  * @param {string} MiddleName.body - user's MiddleName if exists.
@@ -25,8 +25,10 @@ router.post('/signup', Controller.Signup);
 
 /**
  * Login User Route.
- * @route Post auth/login
+ * @route Post /auth/login
  * @group Auth - Login Endpoint
+ * @param {string} Username.body.required - user's Username.
+ * @param {string} Password.body.required - user's Password.
  * @returns {object} 200 - {success:true, token:"{token}"}
  * @returns {Error}  default - Unexpected error
  */

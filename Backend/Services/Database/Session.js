@@ -33,7 +33,6 @@ module.exports = {
         },
         CreateSession: async (entry) => {
             try {
-                console.log("entry.Browser : ", entry.Browser)
                 return await Session.create({
                     UserId: entry.UserId,
                     IP: entry.IP,

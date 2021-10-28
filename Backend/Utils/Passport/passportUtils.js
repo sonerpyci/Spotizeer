@@ -31,8 +31,8 @@ module.exports = {
                         required: true,
                     },
                     {
-                        model: models.SpofityAccount,
-                        as: 'SpofityAccount',
+                        model: models.SpotifyAccount,
+                        as: 'SpotifyAccount',
                         required: false,
                     },
                     {
@@ -51,7 +51,7 @@ module.exports = {
                         SpotifyAccount: user.SpotifyAccount,
                         DeezerAccount: user.DeezerAccount,
                         Language: user.Language,
-                        Session: payload.session,
+                        Session: payload.Session,
                     });
                 }
                 return done("Authentication Required", false);

@@ -111,6 +111,23 @@ module.exports = {
                 console.log(`ERR -> Service.Authentication.DATABASE_ENGINE.CreateSessionForUser() : ${e}`);
                 throw e;
             }
+        },
+        CreateDeezerAccount: async (entry) => {
+            try {
+                return await models.DeezerAccount.create({
+                    DeezerId: entry.DeezerId,
+                    UserId: entry.UserId,
+                    Name: entry.Name,
+                    AccountUrl: entry.AccountUrl,
+                    PictureUrl: entry.PictureUrl,
+                    TrackListUrl: entry.TrackListUrl,
+                    Type: entry.Type,
+                    AuthToken: entry.AuthToken,
+                });
+            } catch (e) {
+                console.log(`ERR -> Service.Authentication.DATABASE_ENGINE.CreateDeezerAccountForUser() : ${e}`);
+                throw e;
+            }
         }
     }
 
