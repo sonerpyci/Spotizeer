@@ -128,6 +128,24 @@ module.exports = {
                 console.log(`ERR -> Service.Authentication.DATABASE_ENGINE.CreateDeezerAccountForUser() : ${e}`);
                 throw e;
             }
+        },
+        CreateSpotifyAccount: async (entry) => {
+            try {
+                return await models.SpotifyAccount.create({
+                    SpotifyId: entry.SpotifyId,
+                    UserId: entry.UserId,
+                    Name: entry.Name,
+                    AccountUrl: entry.AccountUrl,
+                    PictureUrl: entry.PictureUrl,
+                    TrackListUrl: entry.TrackListUrl,
+                    Type: entry.Type,
+                    AuthToken: entry.AuthToken,
+                    RefreshToken: entry.RefreshToken,
+                });
+            } catch (e) {
+                console.log(`ERR -> Service.Authentication.DATABASE_ENGINE.CreateDeezerAccountForUser() : ${e}`);
+                throw e;
+            }
         }
     }
 

@@ -54,12 +54,16 @@ module.exports = (sequelize, DataTypes) => {
             field: 'Type',
         },
         AuthToken: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull : false,
             field: 'AuthToken',
             validate: {
                 notEmpty : {msg: 'DeezerAccount AuthToken cannot be empty.'}
             }
+        },
+        RefreshToken: {
+            type: DataTypes.TEXT,
+            field: 'RefreshToken'
         },
         Status: {
             type: DataTypes.INTEGER,

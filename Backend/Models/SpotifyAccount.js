@@ -40,12 +40,9 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         TrackListUrl: {
-            type: DataTypes.STRING,
-            allowNull : false,
+            type: DataTypes.TEXT,
+            allowNull : true,
             field: 'TrackListUrl',
-            validate: {
-                notEmpty : {msg: 'SpotifyAccount TrackListUrl cannot be empty.'}
-            }
         },
         Type:  {
             type: DataTypes.STRING,
@@ -54,11 +51,19 @@ module.exports = (sequelize, DataTypes) => {
             field: 'Type',
         },
         AuthToken: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull : false,
             field: 'AuthToken',
             validate: {
                 notEmpty : {msg: 'SpotifyAccount AuthToken cannot be empty.'}
+            }
+        },
+        RefreshToken: {
+            type: DataTypes.TEXT,
+            allowNull : false,
+            field: 'RefreshToken',
+            validate: {
+                notEmpty : {msg: 'SpotifyAccount RefreshToken cannot be empty.'}
             }
         },
         Status: {

@@ -26,7 +26,7 @@ const sequelize = new Sequelize({
             ca: process.env.DB_CA ||  fs.readFileSync(__dirname+ '/../db_certs/' + 'ca.pem'),
         }
     } : {supportBigNumbers: true},
-    logging: true,
+    logging: false,
     pool: {
         max: 30,
         min: 0,
